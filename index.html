@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Jordan Costley | Homework 4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#cc9423">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <div id="header"><h1>The Boston Braves Roster Builder 3000</h1></div>
+    <div id="inputFields">
+        <h2>Input information below and submit to add player to roster.</h2>
+    <input id="firstName" type="text" name="" placeholder="First Name"><br>
+    <input id="lastName" type="text" name="" placeholder="Last Name"><br>
+    <input id="playerAge" type="number" name="" placeholder="Age"><br>
+    <input id="playerNumber" type="number" name="" placeholder="Number"><br>
+    <select id="playerPosition">
+        <option value="Pitcher">Pitcher</option>
+        <option value="First Base">First Base</option>
+        <option value="Second Base">Second Base</option>
+        <option value="Short Stop">Short Stop</option>
+        <option value="Third Base">Third Base</option>
+        <option value="Catcher">Catcher</option>
+        <option value="Left Field">Left Field</option>
+        <option value="Center Field">Center Field</option>
+        <option value="Right Field">Right Field</option>
+      </select><br>
+    
+    <button type="button" name="button" onclick="submitInfo()">Submit</button></div>
+    <p id="rosterTitle">Roster:<br><br></p>
+    <p id="rosterMembers"></p>
+</body>
+<script>
+    var team = [];
+    //get player information and push to array
+    function submitInfo() {
+        var fn = document.getElementById('firstName').value;
+        var ln = document.getElementById('lastName').value;
+        var pa = document.getElementById('playerAge').value;
+        var pn = document.getElementById('playerNumber').value;
+        var pp = document.getElementById('playerPosition').value;
+
+        var thisPlayer = {firstName:fn,lastName:ln,playerAge:pa,playerNumber:pn,playerPosition:pp};
+        
+        if (fn === '' || ln === '' || pa === '' || pn === '' || pp === '') {
+            alert("Please fill all fields")
+        }
+        else {        
+        team.push(thisPlayer);
+        displayRoster(thisPlayer);
+        }
+    } 
+
+    //set info onto page
+    function displayRoster(newPlayer) {
+        document.getElementById('rosterMembers').innerHTML += "<strong>" + newPlayer.firstName + "</strong>" + " " +  "<strong>" + newPlayer.lastName + "</strong>" + " at " + "<strong>" + newPlayer.playerAge + "</strong>" + " years old,     jersey number " + "<strong>" +  newPlayer.playerNumber + "</strong>" + " playing " + "<strong>" + newPlayer.playerPosition + "</strong>" + "<br>";
+        
+        //reset fields
+
+        document.getElementById('firstName').value = " ";
+        document.getElementById('lastName').value = " ";
+        document.getElementById('playerAge').value = " ";
+        document.getElementById('playerNumber').value = " ";
+        document.getElementById('playerPosition').value = "Pitcher";
+    }
+</script>
+</html>
